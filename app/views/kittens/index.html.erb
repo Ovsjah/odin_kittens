@@ -1,0 +1,34 @@
+<% provide(:header, 'Kittens') %>
+<table class="table table-hover table-info mb-0">
+  <thead>
+    <tr>
+      <% @kitten_columns.each do |col_name| %>
+        <th><%= col_name.capitalize %></th>
+      <% end %>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @kittens.each do |kitten| %>
+      <tr>
+        <% @kitten_columns.each do |col_name| %>
+          <td><%= kitten.send(col_name) %></td>
+        <% end %>
+        <td>
+          <div class='dropdown text-center'>
+            <div class='btn' data-toggle='dropdown'>
+              <i class='ti-more-alt'></i>
+            </div>
+            <div class="dropdown-menu dropdown-menu-right" role="menu">
+              <%= link_to 'Delete', kitten, method: :delete,
+                data: { confirm: "Are you sure you want to delete this kitten?" }, class: "dropdown-item" %>
+              <%= link_to 'Edit', edit_kitten_path(kitten), class: "dropdown-item" %>
+              <%= link_to 'Show', kitten, class: "dropdown-item" %>
+            </div>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to "+ kitten", new_kitten_path, class: 'btn btn-primary btn-block rounded-0 font-weight-bold' %>

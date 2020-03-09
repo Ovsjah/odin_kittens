@@ -1,0 +1,11 @@
+<% provide(:header, @kitten.name) %>
+<div class='row justify-content-center'>
+  <% @kitten_columns.each do |kitten_col| %>
+    <h4 class='col-auto title'>
+      <span class='badge badge-info'>
+        <span class='text-dark'><%= kitten_col.capitalize %>:</span>
+        <%= @kitten.send(kitten_col) %>
+      </span>
+    </h4>
+  <% end %>
+</div>

@@ -1,0 +1,11 @@
+<div class='container col-md-8'>
+  <%= form_with model: @kitten, local: true, class: :form do |f| %>
+    <% @kitten_columns.each do |kitten_col| %>
+      <div class='form-group'>
+        <%= f.label kitten_col, class: 'col-form-label col-form-label-sm' %>
+        <%= f.text_field kitten_col, class: 'form-control form-control-sm', required: true %>
+      </div>
+    <% end %>
+    <%= f.submit btn_txt, class: 'btn btn-primary btn-block font-weight-bold' %>
+  <% end %>
+</div>
